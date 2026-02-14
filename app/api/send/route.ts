@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { createToken } from "@/lib/token";
-import { resend } from "@/lib/resend";
+import { sendEmail } from "@/lib/mailer";
 import { renderValentineInvite } from "@/lib/email-templates/valentine-invite";
 
 const sendSchema = z.object({
@@ -35,23 +35,14 @@ export async function POST(request: NextRequest) {
     const baseUrl = process.env.BASE_URL || "http://localhost:3000";
     const valentineUrl = `${baseUrl}/valentine/${token}`;
 
-    const { data, error } = await resend.emails.send({
-      from: "HeartThrob <onboarding@resend.dev>",
+    const result = await sendEmail({
       to: recipientEmail,
-      reply_to: senderEmail,
+      replyTo: senderEmail,
       subject: `${senderName} sent you something special`,
       html: renderValentineInvite({ senderName, valentineUrl }),
     });
 
-    if (error) {
-      console.error("Resend API error:", JSON.stringify(error));
-      return NextResponse.json(
-        { error: "Failed to send email", details: error.message },
-        { status: 500 }
-      );
-    }
-
-    return NextResponse.json({ success: true, emailId: data?.id });
+    return NextResponse.json({ success: true, emailId: result.id });
   } catch (error) {
     const msg = error instanceof Error ? error.message : String(error);
     console.error("Send error:", msg);
