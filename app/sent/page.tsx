@@ -50,7 +50,7 @@ export default function SentPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.5 }}
         >
-          Your message has been delivered. Now we wait for the purr-fect
+          Your message has been delivered. Now we wait for their sweet
           response!
         </motion.p>
 

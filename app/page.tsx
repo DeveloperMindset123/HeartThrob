@@ -22,7 +22,7 @@ export default function Home() {
             Heart<span className="text-gradient italic">Throb</span>
           </h1>
           <p className="mt-3 font-body text-lg text-rose-700/70">
-            Send a purr-fect message to someone special
+            Send a heartfelt message to someone special
           </p>
           {/* Decorative line */}
           <div className="mx-auto mt-5 flex items-center justify-center gap-3">

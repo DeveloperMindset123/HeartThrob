@@ -3,11 +3,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "HeartThrob",
-  description: "Send a purr-fect Valentine's Day message to someone special",
+  description: "Send a heartfelt Valentine's Day message to someone special",
   metadataBase: new URL(process.env.BASE_URL || "http://localhost:3000"),
   openGraph: {
     title: "HeartThrob",
-    description: "Send a purr-fect Valentine's Day message to someone special",
+    description: "Send a heartfelt Valentine's Day message to someone special",
     images: ["/og-image.png"],
   },
 };
